@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+--kimi-black:#111111;
+
+--kimi-green:#00B894;
+
+--kimi-gray:#8A8A8A;
+
+--kimi-light:#E6E6E6;
+
 }
 
 @theme inline {

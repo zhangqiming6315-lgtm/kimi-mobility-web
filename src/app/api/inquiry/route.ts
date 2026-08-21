@@ -1,3 +1,4 @@
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextResponse } from "next/server";
 
 const limits = {
@@ -17,6 +18,25 @@ const inquiryTypes = new Set([
 ]);
 
 type Inquiry = Record<keyof typeof limits, string>;
+
+type InquiryEnvironment = {
+  RESEND_API_KEY?: string;
+  INQUIRY_FROM_EMAIL?: string;
+  INQUIRY_TO_EMAIL?: string;
+};
+
+function getInquiryEnvironment(): InquiryEnvironment {
+  try {
+    return getCloudflareContext().env as InquiryEnvironment;
+  } catch {
+    // `next dev` and a regular Node.js build do not provide a Cloudflare context.
+    return {
+      RESEND_API_KEY: process.env.RESEND_API_KEY,
+      INQUIRY_FROM_EMAIL: process.env.INQUIRY_FROM_EMAIL,
+      INQUIRY_TO_EMAIL: process.env.INQUIRY_TO_EMAIL,
+    };
+  }
+}
 
 function escapeHtml(value: string) {
   return value.replace(
@@ -76,10 +96,18 @@ export async function POST(request: Request) {
     );
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.INQUIRY_FROM_EMAIL;
-  const to = process.env.INQUIRY_TO_EMAIL;
+  const environment = getInquiryEnvironment();
+  const apiKey = environment.RESEND_API_KEY;
+  const from = environment.INQUIRY_FROM_EMAIL;
+  const to = environment.INQUIRY_TO_EMAIL;
   if (!apiKey || !from || !to) {
+    console.error("[inquiry] Email configuration is incomplete.", {
+      missing: [
+        !apiKey && "RESEND_API_KEY",
+        !from && "INQUIRY_FROM_EMAIL",
+        !to && "INQUIRY_TO_EMAIL",
+      ].filter(Boolean),
+    });
     return NextResponse.json(
       {
         ok: false,
@@ -130,6 +158,10 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
+      console.error("[inquiry] Resend rejected the email request.", {
+        status: response.status,
+        requestId: response.headers.get("x-request-id") ?? undefined,
+      });
       return NextResponse.json(
         {
           ok: false,
@@ -145,7 +177,13 @@ export async function POST(request: Request) {
       code: "INQUIRY_SENT",
       message: "Inquiry sent successfully.",
     });
-  } catch {
+  } catch (error) {
+    console.error("[inquiry] Email delivery request failed.", {
+      error:
+        error instanceof Error
+          ? { name: error.name, message: error.message }
+          : "Unknown error",
+    });
     return NextResponse.json(
       {
         ok: false,

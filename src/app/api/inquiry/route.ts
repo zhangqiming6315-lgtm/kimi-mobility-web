@@ -25,16 +25,29 @@ type InquiryEnvironment = {
   INQUIRY_TO_EMAIL?: string;
 };
 
-function getInquiryEnvironment(): InquiryEnvironment {
+async function getInquiryEnvironment(): Promise<InquiryEnvironment> {
+  const localEnvironment: InquiryEnvironment = {
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    INQUIRY_FROM_EMAIL: process.env.INQUIRY_FROM_EMAIL,
+    INQUIRY_TO_EMAIL: process.env.INQUIRY_TO_EMAIL,
+  };
+
   try {
-    return getCloudflareContext().env as InquiryEnvironment;
-  } catch {
-    // `next dev` and a regular Node.js build do not provide a Cloudflare context.
+    const cloudflareEnvironment = (
+      await getCloudflareContext({ async: true })
+    ).env as InquiryEnvironment;
+
     return {
-      RESEND_API_KEY: process.env.RESEND_API_KEY,
-      INQUIRY_FROM_EMAIL: process.env.INQUIRY_FROM_EMAIL,
-      INQUIRY_TO_EMAIL: process.env.INQUIRY_TO_EMAIL,
+      RESEND_API_KEY:
+        cloudflareEnvironment.RESEND_API_KEY ?? localEnvironment.RESEND_API_KEY,
+      INQUIRY_FROM_EMAIL:
+        cloudflareEnvironment.INQUIRY_FROM_EMAIL ?? localEnvironment.INQUIRY_FROM_EMAIL,
+      INQUIRY_TO_EMAIL:
+        cloudflareEnvironment.INQUIRY_TO_EMAIL ?? localEnvironment.INQUIRY_TO_EMAIL,
     };
+  } catch {
+    // A regular Node.js runtime has no Cloudflare request context.
+    return localEnvironment;
   }
 }
 
@@ -96,18 +109,17 @@ export async function POST(request: Request) {
     );
   }
 
-  const environment = getInquiryEnvironment();
+  const environment = await getInquiryEnvironment();
   const apiKey = environment.RESEND_API_KEY;
   const from = environment.INQUIRY_FROM_EMAIL;
   const to = environment.INQUIRY_TO_EMAIL;
+  console.info("[inquiry] Email configuration status.", {
+    RESEND_API_KEY: Boolean(apiKey),
+    INQUIRY_FROM_EMAIL: Boolean(from),
+    INQUIRY_TO_EMAIL: Boolean(to),
+  });
   if (!apiKey || !from || !to) {
-    console.error("[inquiry] Email configuration is incomplete.", {
-      missing: [
-        !apiKey && "RESEND_API_KEY",
-        !from && "INQUIRY_FROM_EMAIL",
-        !to && "INQUIRY_TO_EMAIL",
-      ].filter(Boolean),
-    });
+    console.error("[inquiry] Email configuration is incomplete.");
     return NextResponse.json(
       {
         ok: false,

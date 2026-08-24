@@ -14,7 +14,7 @@ const products = [
     cta: "EXPLORE DELIVERY X1",
     href: "/products/delivery-x1",
     image:
-      "/images/products/Delivery/X1/02_Product/KIMI_Delivery_X1_Side_View_V1.png",
+      "/images/products/Delivery/X1/02_Product/KIMI_Delivery_X1_Product_Card.webp",
     alt: "KIMI Delivery X1 electric delivery motorcycle in side profile",
     imageClassName: "object-contain",
   },
@@ -40,7 +40,7 @@ const products = [
     cta: "EXPLORE UTILITY X1",
     href: "/products/utility-x1",
     image:
-      "/images/products/Utility/X1/02_Product/utility-x1-side-profile.png",
+      "/images/products/Utility/X1/02_Product/utility-x1-product-card.webp",
     alt: "KIMI Utility X1 heavy-duty electric utility motorcycle in side profile",
     imageClassName: "object-contain",
   },
@@ -110,8 +110,10 @@ export default function ProductsPage() {
                     alt={product.alt}
                     className={`${product.imageClassName} p-2 transition-transform duration-500 group-hover:scale-[1.02] sm:p-3`}
                     fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
+                    loading="lazy"
+                    sizes="(min-width: 1280px) 400px, (min-width: 1024px) 30vw, 100vw"
                     src={product.image}
+                    unoptimized
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-7 sm:p-9">

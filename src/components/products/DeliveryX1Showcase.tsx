@@ -25,9 +25,11 @@ function FeatureImage({ alt, src, priority = false }: FeatureImageProps) {
       alt={alt}
       className="h-auto w-full"
       height={1122}
+      loading={priority ? "eager" : "lazy"}
       priority={priority}
       sizes="(min-width: 1280px) 1280px, 100vw"
       src={src}
+      unoptimized
       width={1402}
     />
   );
@@ -58,9 +60,11 @@ export default function DeliveryX1Showcase() {
             alt="KIMI Delivery X1 electric delivery motorcycle on an urban road"
             className="h-auto w-full object-contain object-[52%_center] sm:object-center"
             height={1123}
+            fetchPriority="high"
             priority
             sizes="(min-width: 1440px) 1401px, 100vw"
-            src={`${assetRoot}/01_Hero/KIMI_Delivery_X1_Hero_V1.png`}
+            src={`${assetRoot}/01_Hero/KIMI_Delivery_X1_Hero_V1.webp`}
+            unoptimized
             width={1401}
           />
         </Container>
@@ -95,7 +99,7 @@ export default function DeliveryX1Showcase() {
             </h2>
           </div>
           <div className="mt-12 overflow-hidden bg-white sm:mt-16">
-            <FeatureImage alt="Side view of the graphite-gray KIMI Delivery X1" src={`${assetRoot}/02_Product/KIMI_Delivery_X1_Side_View_V1.png`} />
+            <FeatureImage alt="Side view of the graphite-gray KIMI Delivery X1" src={`${assetRoot}/02_Product/KIMI_Delivery_X1_Side_View_V1.webp`} />
           </div>
         </Container>
       </section>
@@ -103,7 +107,7 @@ export default function DeliveryX1Showcase() {
       <section className="scroll-mt-[5.25rem] bg-white py-[var(--space-section)]" id="body-finish">
         <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="overflow-hidden bg-[#ececea]">
-            <FeatureImage alt="Graphite-gray body finish and KIMI branding detail" src={`${assetRoot}/03_Details/KIMI_Delivery_X1_Body_Branding_V1.png`} />
+            <FeatureImage alt="Graphite-gray body finish and KIMI branding detail" src={`${assetRoot}/03_Details/KIMI_Delivery_X1_Body_Branding_V1.webp`} />
           </div>
           <div className="max-w-xl lg:order-first">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">Body &amp; finish</p>
@@ -126,8 +130,10 @@ export default function DeliveryX1Showcase() {
                   alt="Delivery X1 LED headlight detail"
                   className="h-full w-full object-cover object-top"
                   height={600}
+                  loading="lazy"
                   sizes="(min-width: 768px) 50vw, 100vw"
                   src={`${assetRoot}/03_Details/KIMI_Delivery_X1_LED_Headlight.jpg`}
+                  unoptimized
                   width={750}
                 />
               </div>
@@ -144,7 +150,7 @@ export default function DeliveryX1Showcase() {
       <section className="scroll-mt-[5.25rem] bg-[#e9e9e6] py-[var(--space-section)]" id="seat-rack">
         <Container className="grid items-center gap-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-20">
           <div className="overflow-hidden bg-white">
-            <FeatureImage alt="Delivery X1 extended seat and heavy-duty rear rack" src={`${assetRoot}/03_Details/KIMI_Delivery_X1_Seat_Rack_V1.png`} />
+            <FeatureImage alt="Delivery X1 extended seat and heavy-duty rear rack" src={`${assetRoot}/03_Details/KIMI_Delivery_X1_Seat_Rack_V1.webp`} />
           </div>
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">Work-ready design</p>
@@ -185,8 +191,10 @@ export default function DeliveryX1Showcase() {
           alt="KIMI Delivery X1 operating in wet-weather delivery conditions"
           className="h-auto min-h-[32rem] w-full object-cover object-center"
           height={1122}
+          loading="lazy"
           sizes="100vw"
-          src={`${assetRoot}/04_Scenes/KIMI_Delivery_X1_All_Weather_V1.png`}
+          src={`${assetRoot}/04_Scenes/KIMI_Delivery_X1_All_Weather_V1.webp`}
+          unoptimized
           width={1402}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/76 via-black/28 to-transparent" />

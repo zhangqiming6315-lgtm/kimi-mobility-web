@@ -25,8 +25,10 @@ function ProductImage({ alt, src, className = "" }: ProductImageProps) {
       alt={alt}
       className={`h-auto w-full ${className}`}
       height={941}
+      loading="lazy"
       sizes="(min-width: 1280px) 1280px, 100vw"
       src={src}
+      unoptimized
       width={1672}
     />
   );
@@ -60,9 +62,11 @@ export default function UrbanX1Showcase() {
             alt="Graphite-gray KIMI Urban X1 electric scooter in a modern city setting"
             className="h-auto w-full object-contain lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-[58%_center]"
             height={941}
+            fetchPriority="high"
             priority
             sizes="100vw"
-            src={`${assetRoot}/01_Hero/urban-x1-hero-m3-direction-v2.png`}
+            src={`${assetRoot}/01_Hero/urban-x1-hero-m3-direction-v2.webp`}
+            unoptimized
             width={1672}
           />
           <div
@@ -119,7 +123,7 @@ export default function UrbanX1Showcase() {
             <p className="mt-7 max-w-3xl text-[length:var(--text-lead)] leading-relaxed text-kimi-black/58">Urban X1 combines practical proportions, stable handling and everyday comfort in a clean electric platform designed for city travel.</p>
           </div>
           <div className="mt-12 overflow-hidden bg-white sm:mt-16">
-            <ProductImage alt="Side profile of the graphite-gray KIMI Urban X1" src={`${assetRoot}/02_Product/urban-x1-side-profile.png`} />
+            <ProductImage alt="Side profile of the graphite-gray KIMI Urban X1" src={`${assetRoot}/02_Product/urban-x1-side-profile.webp`} />
           </div>
         </Container>
       </section>
@@ -127,7 +131,7 @@ export default function UrbanX1Showcase() {
       <section className="bg-white py-20 lg:py-24 xl:py-28" id="body-design">
         <Container className="grid items-center gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-16 xl:gap-20">
           <div className="overflow-hidden bg-[#ececea]">
-            <ProductImage alt="Rear three-quarter view of the KIMI Urban X1 body design" src={`${assetRoot}/02_Product/urban-x1-rear-three-quarter.png`} />
+            <ProductImage alt="Rear three-quarter view of the KIMI Urban X1 body design" src={`${assetRoot}/02_Product/urban-x1-rear-three-quarter.webp`} />
           </div>
           <div className="max-w-xl lg:order-first">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">Body &amp; design</p>
@@ -145,14 +149,14 @@ export default function UrbanX1Showcase() {
             <p className="mt-8 text-lg font-medium text-white/62">Integrated LED headlight</p>
           </div>
           <div className="overflow-hidden bg-[#191919]">
-            <Image alt="Integrated LED headlight on the KIMI Urban X1" className="h-auto w-full" height={1050} sizes="(min-width: 1024px) 55vw, 100vw" src={`${assetRoot}/03_Details/urban-x1-led-headlight.png`} width={1498} />
+            <Image alt="Integrated LED headlight on the KIMI Urban X1" className="h-auto w-full" height={1050} loading="lazy" sizes="(min-width: 1280px) 704px, (min-width: 1024px) 55vw, 100vw" src={`${assetRoot}/03_Details/urban-x1-led-headlight.webp`} unoptimized width={1498} />
           </div>
         </Container>
       </section>
 
       <section className="bg-[#ecece9] py-20 lg:py-24 xl:py-28" id="cockpit">
         <Container className="grid items-center gap-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-16 xl:gap-20">
-          <div className="overflow-hidden bg-white"><ProductImage alt="Digital rider display on the KIMI Urban X1" src={`${assetRoot}/03_Details/urban-x1-smart-display.png`} /></div>
+          <div className="overflow-hidden bg-white"><ProductImage alt="Digital rider display on the KIMI Urban X1" src={`${assetRoot}/03_Details/urban-x1-smart-display.webp`} /></div>
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">Rider interface</p>
             <h2 className="mt-5 text-[length:var(--text-heading)] font-semibold leading-[1.02] tracking-[-0.05em]">Essential information at a glance.</h2>
@@ -170,14 +174,14 @@ export default function UrbanX1Showcase() {
             </div>
             <p className="max-w-2xl text-[length:var(--text-lead)] leading-relaxed text-kimi-black/58">An extended two-person seat, wide footboard and practical under-seat storage support everyday commuting and daily errands.</p>
           </div>
-          <div className="mt-12 overflow-hidden bg-[#efefec] sm:mt-16"><ProductImage alt="KIMI Urban X1 extended seat and open under-seat storage" src={`${assetRoot}/03_Details/urban-x1-underseat-storage.png`} /></div>
+          <div className="mt-12 overflow-hidden bg-[#efefec] sm:mt-16"><ProductImage alt="KIMI Urban X1 extended seat and open under-seat storage" src={`${assetRoot}/03_Details/urban-x1-underseat-storage.webp`} /></div>
         </Container>
       </section>
 
       <section className="bg-[#e8e8e5] py-20 lg:py-24 xl:py-28" id="ride-control">
         <Container className="grid items-center gap-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-16 xl:gap-20">
           <div className="overflow-hidden bg-white">
-            <Image alt="Rear disc brake and suspension on the KIMI Urban X1" className="h-auto w-full" height={1086} sizes="(min-width: 1024px) 55vw, 100vw" src={`${assetRoot}/03_Details/urban-x1-rear-brake-suspension.png`} width={1448} />
+            <Image alt="Rear disc brake and suspension on the KIMI Urban X1" className="h-auto w-full" height={1086} loading="lazy" sizes="(min-width: 1280px) 704px, (min-width: 1024px) 55vw, 100vw" src={`${assetRoot}/03_Details/urban-x1-rear-brake-suspension.webp`} unoptimized width={1448} />
           </div>
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">Ride control</p>
@@ -187,8 +191,8 @@ export default function UrbanX1Showcase() {
         </Container>
       </section>
 
-      <SceneSection alt="KIMI Urban X1 being ridden through a city in daylight" eyebrow="City commuting" heading="Move through the city with confidence." id="city-commuting" image="urban-x1-city-ride.png" mobilePositionClass="object-[38%_center]" />
-      <SceneSection alt="KIMI Urban X1 in a rainy city at night" eyebrow="Everyday visibility" heading="Ready when the city changes." id="everyday-visibility" image="urban-x1-rain-night.png" mobilePositionClass="object-[30%_center]" />
+      <SceneSection alt="KIMI Urban X1 being ridden through a city in daylight" eyebrow="City commuting" heading="Move through the city with confidence." id="city-commuting" image="urban-x1-city-ride.webp" mobilePositionClass="object-[38%_center]" />
+      <SceneSection alt="KIMI Urban X1 in a rainy city at night" eyebrow="Everyday visibility" heading="Ready when the city changes." id="everyday-visibility" image="urban-x1-rain-night.webp" mobilePositionClass="object-[30%_center]" />
 
       <section className="border-t border-white/10 bg-[#15191b] py-[var(--space-section)] text-white" id="dealer-inquiry">
         <Container className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -220,8 +224,10 @@ function SceneSection({ alt, eyebrow, heading, id, image, mobilePositionClass }:
         alt={alt}
         className={`h-[32rem] w-full object-cover sm:h-auto sm:min-h-[30rem] sm:object-cover sm:object-center ${mobilePositionClass}`}
         height={941}
+        loading="lazy"
         sizes="100vw"
         src={`${assetRoot}/04_Scenes/${image}`}
+        unoptimized
         width={1672}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/10 to-transparent sm:bg-gradient-to-l sm:from-black/72 sm:via-black/18 sm:to-transparent" />

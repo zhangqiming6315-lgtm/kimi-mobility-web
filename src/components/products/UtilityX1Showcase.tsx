@@ -26,9 +26,11 @@ export default function UtilityX1Showcase() {
             alt="KIMI Utility X1 heavy-duty electric utility motorcycle"
             className="h-auto w-full object-contain lg:absolute lg:inset-0 lg:h-full"
             height={941}
+            fetchPriority="high"
             priority
             sizes="100vw"
-            src={`${assetRoot}/01_Hero/utility-x1-hero.png`}
+            src={`${assetRoot}/01_Hero/utility-x1-hero.webp`}
+            unoptimized
             width={1672}
           />
           <div
@@ -97,8 +99,10 @@ export default function UtilityX1Showcase() {
               alt="Side profile of the KIMI Utility X1"
               className="h-auto w-full"
               height={1024}
+              loading="lazy"
               sizes="(min-width: 1280px) 1280px, 100vw"
-              src={`${assetRoot}/02_Product/utility-x1-side-profile.png`}
+              src={`${assetRoot}/02_Product/utility-x1-side-profile.webp`}
+              unoptimized
               width={1536}
             />
           </div>
@@ -112,8 +116,10 @@ export default function UtilityX1Showcase() {
               alt="Utility X1 modular rear cargo platform detail"
               className="h-auto w-full"
               height={1086}
-              sizes="(min-width: 1024px) 56vw, 100vw"
-              src={`${assetRoot}/03_Details/utility-x1-cargo-rack-detail.png`}
+              loading="lazy"
+              sizes="(min-width: 1280px) 704px, (min-width: 1024px) 56vw, 100vw"
+              src={`${assetRoot}/03_Details/utility-x1-cargo-rack-detail.webp`}
+              unoptimized
               width={1448}
             />
           </div>
@@ -149,8 +155,10 @@ export default function UtilityX1Showcase() {
             alt="KIMI Utility X1 configured for a field service route"
             className="h-auto min-h-[32rem] w-full object-contain"
             height={941}
+            loading="lazy"
             sizes="100vw"
-            src={`${assetRoot}/04_Scenes/utility-x1-service-route.png`}
+            src={`${assetRoot}/04_Scenes/utility-x1-service-route.webp`}
+            unoptimized
             width={1672}
           />
           <div className="absolute inset-0 bg-gradient-to-l from-black/62 via-black/18 to-transparent" />
@@ -168,8 +176,10 @@ export default function UtilityX1Showcase() {
             alt="KIMI Utility X1 configured for a field service route"
             className="h-auto w-full"
             height={941}
+            loading="lazy"
             sizes="100vw"
-            src={`${assetRoot}/04_Scenes/utility-x1-service-route.png`}
+            src={`${assetRoot}/04_Scenes/utility-x1-service-route.webp`}
+            unoptimized
             width={1672}
           />
           <Container className="py-12">

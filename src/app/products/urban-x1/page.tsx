@@ -13,7 +13,13 @@ export const metadata: Metadata = {
     title: "Urban X1 Electric Scooter | KIMI Mobility",
     description,
     url: absoluteUrl("/products/urban-x1"),
-    images: [{ url: "/images/products/Urban/X1/01_Hero/urban-x1-hero-m3-direction-v2.png", alt: "KIMI Urban X1 electric scooter in a modern city setting" }],
+    images: [{ url: "/images/products/Urban/X1/01_Hero/urban-x1-hero-m3-direction-v2.webp", alt: "KIMI Urban X1 electric scooter in a modern city setting" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Urban X1 Electric Scooter | KIMI Mobility",
+    description,
+    images: ["/images/products/Urban/X1/01_Hero/urban-x1-hero-m3-direction-v2.webp"],
   },
 };
 

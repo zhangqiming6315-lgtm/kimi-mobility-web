@@ -54,6 +54,7 @@ export const metadata: Metadata = {
     title: "Electric Mobility Products | KIMI Mobility",
     description: "Explore KIMI Delivery X1, Urban X1 and Utility X1 electric mobility products for delivery, city travel and commercial operations.",
     url: absoluteUrl("/products"),
+    images: [{ url: "/images/hero/hero-main.webp", alt: "KIMI commercial electric mobility vehicle in a city at night" }],
   },
 };
 

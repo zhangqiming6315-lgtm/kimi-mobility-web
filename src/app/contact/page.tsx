@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "Contact KIMI Mobility",
     description: "Contact KIMI Mobility for product and partnership inquiries from distributors, commercial operators and delivery companies.",
     url: absoluteUrl("/contact"),
+    images: [{ url: "/images/hero/hero-main.webp", alt: "KIMI commercial electric mobility vehicle in a city at night" }],
   },
 };
 

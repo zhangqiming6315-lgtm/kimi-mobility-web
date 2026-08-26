@@ -61,6 +61,16 @@ function escapeHtml(value: string) {
   );
 }
 
+function singleLine(value: string) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function formatFromAddress(value: string) {
+  const bracketedAddress = value.match(/<([^<>]+)>/)?.[1]?.trim();
+  const address = bracketedAddress ?? value.trim();
+  return `KIMI Mobility Website <${address}>`;
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -111,14 +121,14 @@ export async function POST(request: Request) {
 
   const environment = await getInquiryEnvironment();
   const apiKey = environment.RESEND_API_KEY;
-  const from = environment.INQUIRY_FROM_EMAIL;
+  const configuredFrom = environment.INQUIRY_FROM_EMAIL;
   const to = environment.INQUIRY_TO_EMAIL;
   console.info("[inquiry] Email configuration status.", {
     RESEND_API_KEY: Boolean(apiKey),
-    INQUIRY_FROM_EMAIL: Boolean(from),
+    INQUIRY_FROM_EMAIL: Boolean(configuredFrom),
     INQUIRY_TO_EMAIL: Boolean(to),
   });
-  if (!apiKey || !from || !to) {
+  if (!apiKey || !configuredFrom || !to) {
     console.error("[inquiry] Email configuration is incomplete.");
     return NextResponse.json(
       {
@@ -130,27 +140,77 @@ export async function POST(request: Request) {
     );
   }
 
-  const submittedAt = new Date().toISOString();
+  const from = formatFromAddress(configuredFrom);
   const rows = [
-    ["Name / Contact Person", inquiry.name],
+    ["Name", inquiry.name],
     ["Company", inquiry.company],
-    ["Business Email", inquiry.email],
-    ["Country / Market", inquiry.market],
+    ["Email", inquiry.email],
+    ["Country", inquiry.market],
     ["Inquiry Type", inquiry.type],
-    ["Submitted At", submittedAt],
-  ];
+  ].filter((row): row is [string, string] => Boolean(row[1]));
+  const subjectDetails = [inquiry.market, inquiry.name]
+    .map(singleLine)
+    .filter(Boolean);
+  const subject = ["New KIMI Inquiry", ...subjectDetails].join(" — ");
   const text = [
+    "NEW WEBSITE INQUIRY",
+    "",
     ...rows.map(([label, value]) => `${label}: ${value}`),
     "",
     "Message:",
     inquiry.message,
+    "",
+    "KIMI Mobility",
+    "Shanghai Kaimai New Energy Technology Co., Ltd.",
+    "Electric Mobility · Delivery · Utility · Urban",
+    "kimimobility.com",
   ].join("\n");
-  const html = `<h2>New KIMI Mobility inquiry</h2><table>${rows
-    .map(
-      ([label, value]) =>
-        `<tr><th align="left">${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`,
-    )
-    .join("")}</table><h3>Message</h3><p>${escapeHtml(inquiry.message).replace(/\n/g, "<br>")}</p>`;
+  const html = `<!doctype html>
+<html lang="en">
+  <body style="margin:0;background:#f2f2f0;color:#111111;font-family:Arial,Helvetica,sans-serif;">
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;">New inquiry from ${escapeHtml(inquiry.name)}.</div>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f2f2f0;">
+      <tr>
+        <td align="center" style="padding:32px 16px;">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:680px;background:#ffffff;border-collapse:collapse;">
+            <tr>
+              <td style="background:#111111;padding:28px 32px;">
+                <img src="https://kimimobility.com/email/kimi-email-logo.png" alt="KIMI Mobility" width="150" style="display:block;width:150px;height:auto;border:0;">
+                <p style="margin:24px 0 0;color:#00b894;font-size:12px;font-weight:700;letter-spacing:2.4px;line-height:18px;">NEW WEBSITE INQUIRY</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:32px;">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;">
+                  ${rows
+                    .map(
+                      ([label, value]) => `<tr>
+                    <td valign="top" style="width:160px;border-bottom:1px solid #e6e6e6;padding:14px 16px 14px 0;color:#8a8a8a;font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;">${escapeHtml(label)}</td>
+                    <td valign="top" style="border-bottom:1px solid #e6e6e6;padding:14px 0;color:#111111;font-size:15px;line-height:23px;">${escapeHtml(value)}</td>
+                  </tr>`,
+                    )
+                    .join("")}
+                </table>
+                <div style="margin-top:28px;border-left:3px solid #00b894;padding:4px 0 4px 20px;">
+                  <p style="margin:0 0 10px;color:#8a8a8a;font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;">Message</p>
+                  <p style="margin:0;color:#111111;font-size:15px;line-height:24px;">${escapeHtml(inquiry.message).replace(/\n/g, "<br>")}</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="background:#111111;padding:26px 32px;color:#ffffff;">
+                <p style="margin:0;font-size:15px;font-weight:700;line-height:22px;">KIMI Mobility</p>
+                <p style="margin:6px 0 0;color:#a7a7a7;font-size:12px;line-height:19px;">Shanghai Kaimai New Energy Technology Co., Ltd.</p>
+                <p style="margin:6px 0 0;color:#a7a7a7;font-size:12px;line-height:19px;">Electric Mobility · Delivery · Utility · Urban</p>
+                <p style="margin:12px 0 0;font-size:12px;line-height:19px;"><a href="https://kimimobility.com" style="color:#00b894;text-decoration:none;">kimimobility.com</a></p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>`;
 
   try {
     const response = await fetch("https://api.resend.com/emails", {
@@ -163,7 +223,7 @@ export async function POST(request: Request) {
         from,
         to: [to],
         reply_to: inquiry.email,
-        subject: `KIMI Mobility inquiry — ${inquiry.company}`,
+        subject,
         text,
         html,
       }),

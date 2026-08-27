@@ -12,7 +12,6 @@ const description =
   "Explore KIMI commercial electric mobility solutions for last-mile delivery, urban transportation, utility work and fleet operations.";
 
 export const metadata: Metadata = {
-  title: "Commercial Electric Mobility",
   description,
   alternates: { canonical: "/" },
   openGraph: {

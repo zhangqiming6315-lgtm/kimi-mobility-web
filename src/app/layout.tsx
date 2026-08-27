@@ -44,7 +44,6 @@ export const metadata: Metadata = {
       "Purpose-built electric motorcycles and scooters for urban mobility, last-mile delivery, commercial utility and fleet operations.",
     images: ["/images/hero/hero-main.webp"],
   },
-  icons: { icon: "/favicon.ico" },
 };
 
 const organizationJsonLd = {

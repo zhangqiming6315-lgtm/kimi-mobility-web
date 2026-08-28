@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import JsonLd from "@/components/JsonLd";
 import { absoluteUrl, siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -67,6 +68,7 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         {children}
       </body>
+      <GoogleAnalytics gaId="G-C9GGYX0WVZ" />
     </html>
   );
 }

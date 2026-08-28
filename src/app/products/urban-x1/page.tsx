@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import JsonLd from "@/components/JsonLd";
 import UrbanX1Showcase from "@/components/products/UrbanX1Showcase";
 import { absoluteUrl } from "@/lib/site";
 
@@ -24,19 +23,5 @@ export const metadata: Metadata = {
 };
 
 export default function UrbanX1Page() {
-  return (
-    <>
-      <JsonLd data={{
-        "@context": "https://schema.org",
-        "@type": "Product",
-        name: "KIMI Urban X1",
-        description,
-        image: absoluteUrl("/images/products/Urban/X1/01_Hero/urban-x1-hero-m3-direction-v2.png"),
-        brand: { "@type": "Brand", name: "KIMI Mobility" },
-        url: absoluteUrl("/products/urban-x1"),
-        category: "Electric scooter",
-      }} />
-      <UrbanX1Showcase />
-    </>
-  );
+  return <UrbanX1Showcase />;
 }

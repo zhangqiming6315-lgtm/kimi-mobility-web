@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
 import { company } from "@/lib/site";
 
 type FieldName = "name" | "company" | "email" | "market" | "type" | "message";
@@ -40,6 +41,9 @@ export default function InquiryForm() {
       const result: unknown = await response.json().catch(() => null);
       if (!response.ok || !result || typeof result !== "object" || !("ok" in result) || result.ok !== true) {
         throw new Error("Inquiry request failed");
+      }
+      if ("code" in result && result.code === "INQUIRY_SENT") {
+        sendGAEvent("event", "generate_lead");
       }
       form.reset();
       setErrors({});

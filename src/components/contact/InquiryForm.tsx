@@ -1,8 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { sendGAEvent } from "@next/third-parties/google";
 import { company } from "@/lib/site";
+
+declare global {
+  interface Window {
+    gtag?: (command: "event", eventName: string) => void;
+  }
+}
 
 type FieldName = "name" | "company" | "email" | "market" | "type" | "message";
 type FieldErrors = Partial<Record<FieldName, string>>;
@@ -43,7 +48,7 @@ export default function InquiryForm() {
         throw new Error("Inquiry request failed");
       }
       if ("code" in result && result.code === "INQUIRY_SENT") {
-        sendGAEvent("event", "generate_lead");
+        window.gtag?.("event", "generate_lead");
       }
       form.reset();
       setErrors({});

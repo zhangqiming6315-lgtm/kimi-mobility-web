@@ -12,7 +12,7 @@ const description =
   "KIMI develops commercial electric motorcycles and electric mobility solutions for delivery, urban transportation, utility work and fleet operations.";
 
 export const metadata: Metadata = {
-  title: "Commercial Electric Motorcycles",
+  title: { absolute: "Commercial Electric Motorcycles | KIMI Mobility" },
   description,
   alternates: { canonical: "/" },
   openGraph: {

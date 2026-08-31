@@ -17,6 +17,7 @@ function HeroCopy({ headingLevel = "h1" }: HeroCopyProps) {
       </p>
       <Heading className="max-w-[41rem] text-[clamp(2rem,10vw,6rem)] font-semibold leading-[0.97] tracking-[-0.05em] lg:text-[clamp(3.5rem,5.8vw,6rem)]">
         <span className="block whitespace-nowrap">Commercial Electric Mobility.</span>
+        {" "}
         <span className="mt-2.5 block whitespace-nowrap font-medium text-white/66">
           Built for Real Work.
         </span>

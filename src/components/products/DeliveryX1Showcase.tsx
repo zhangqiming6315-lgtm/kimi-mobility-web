@@ -54,7 +54,7 @@ export default function DeliveryX1Showcase() {
         }
       `}</style>
       <section className="scroll-mt-[5.25rem] bg-[#101923] pt-[5.25rem]" aria-labelledby="delivery-x1-title" id="overview">
-        <h1 className="sr-only" id="delivery-x1-title">Delivery X1</h1>
+        <h1 className="sr-only" id="delivery-x1-title">Delivery X1 Electric Delivery Motorcycle</h1>
         <Container className="flex max-w-[90rem] items-center px-0 sm:min-h-[calc(100svh-5.25rem)] sm:px-[var(--page-gutter)] sm:py-6 lg:py-8">
           <Image
             alt="KIMI Delivery X1 electric delivery motorcycle on an urban road"

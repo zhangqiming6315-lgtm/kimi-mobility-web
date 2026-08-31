@@ -86,7 +86,7 @@ export default function UrbanX1Showcase() {
                 className="mt-5 whitespace-nowrap text-[clamp(3rem,5vw,5.25rem)] font-semibold leading-[0.92] tracking-[-0.06em] lg:text-[clamp(2.75rem,4.5vw,4.75rem)]"
                 id="urban-x1-title"
               >
-                URBAN X1
+                Urban X1 Electric Scooter
               </h1>
               <p className="mt-6 max-w-sm text-sm font-semibold uppercase leading-relaxed tracking-[0.18em] text-white/72 sm:text-base">
                 Built for everyday city movement.

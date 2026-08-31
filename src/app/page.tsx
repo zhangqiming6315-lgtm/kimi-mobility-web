@@ -9,13 +9,14 @@ import WhyKimi from "@/components/sections/WhyKimi";
 import { absoluteUrl } from "@/lib/site";
 
 const description =
-  "Explore KIMI commercial electric mobility solutions for last-mile delivery, urban transportation, utility work and fleet operations.";
+  "KIMI develops commercial electric motorcycles and electric mobility solutions for delivery, urban transportation, utility work and fleet operations.";
 
 export const metadata: Metadata = {
+  title: "Commercial Electric Motorcycles",
   description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Commercial Electric Mobility | KIMI Mobility",
+    title: "Commercial Electric Motorcycles | KIMI Mobility",
     description,
     url: absoluteUrl("/"),
     images: [{ url: "/images/hero/hero-main.webp", alt: "KIMI commercial electric mobility vehicle in a city at night" }],

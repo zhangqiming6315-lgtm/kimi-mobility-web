@@ -50,7 +50,7 @@ export default function UtilityX1Showcase() {
                 className="mt-5 whitespace-nowrap text-[clamp(3rem,13vw,5.25rem)] font-semibold leading-[0.92] tracking-[-0.06em] lg:text-[clamp(2.75rem,4.5vw,4.75rem)]"
                 id="utility-x1-title"
               >
-                UTILITY X1
+                Utility X1 Electric Utility Motorcycle
               </h1>
               <p className="mt-6 text-sm font-semibold uppercase leading-relaxed tracking-[0.18em] text-white/72 sm:text-base">
                 Built to carry the work.

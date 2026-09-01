@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/products/delivery-x1",
     "/products/urban-x1",
     "/products/utility-x1",
+    "/solutions/delivery-fleet",
     "/contact",
   ];
 

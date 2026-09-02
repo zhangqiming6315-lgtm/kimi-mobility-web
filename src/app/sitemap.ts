@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/products/utility-x1",
     "/solutions/delivery-fleet",
     "/partners/distributors",
+    "/markets/latin-america",
     "/contact",
   ];
 

@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/partners/distributors",
     "/markets/latin-america",
     "/markets/colombia",
+    "/es/mercados/colombia",
     "/contact",
   ];
 

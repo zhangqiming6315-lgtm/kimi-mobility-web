@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/markets/latin-america",
     "/markets/colombia",
     "/es/mercados/colombia",
+    "/es/productos/delivery-x1",
     "/contact",
   ];
 

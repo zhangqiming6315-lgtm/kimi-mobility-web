@@ -7,7 +7,14 @@ const description = "KIMI Delivery X1 is a purpose-built electric delivery motor
 export const metadata: Metadata = {
   title: "Delivery X1 Electric Delivery Motorcycle",
   description,
-  alternates: { canonical: "/products/delivery-x1" },
+  alternates: {
+    canonical: "/products/delivery-x1",
+    languages: {
+      en: absoluteUrl("/products/delivery-x1"),
+      es: absoluteUrl("/es/productos/delivery-x1"),
+      "x-default": absoluteUrl("/products/delivery-x1"),
+    },
+  },
   openGraph: {
     title: "Delivery X1 Electric Delivery Motorcycle | KIMI Mobility",
     description,

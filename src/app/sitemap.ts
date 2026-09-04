@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/es/soluciones/flota-reparto",
     "/es/socios/distribuidores",
     "/es/oem",
+    "/es/mercados/latinoamerica",
     "/contact",
   ];
 

@@ -10,7 +10,14 @@ const image = "/images/products/Delivery/X1/01_Hero/KIMI_Delivery_X1_Hero_V1.web
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  alternates: { canonical: absoluteUrl(path) },
+  alternates: {
+    canonical: absoluteUrl(path),
+    languages: {
+      en: absoluteUrl(path),
+      es: absoluteUrl("/es/soluciones/flota-reparto"),
+      "x-default": absoluteUrl(path),
+    },
+  },
   openGraph: {
     title,
     description,

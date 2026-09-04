@@ -14,7 +14,14 @@ const image =
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  alternates: { canonical: absoluteUrl(path) },
+  alternates: {
+    canonical: absoluteUrl(path),
+    languages: {
+      en: absoluteUrl(path),
+      es: absoluteUrl("/es/oem"),
+      "x-default": absoluteUrl(path),
+    },
+  },
   openGraph: {
     title,
     description,

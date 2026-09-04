@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/es/productos/delivery-x1",
     "/es/soluciones/flota-reparto",
     "/es/socios/distribuidores",
+    "/es/oem",
     "/contact",
   ];
 

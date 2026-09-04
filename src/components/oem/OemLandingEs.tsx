@@ -1,0 +1,74 @@
+import Image from "next/image";
+import Link from "next/link";
+import ButtonLink from "@/components/ui/ButtonLink";
+import Container from "@/components/ui/Container";
+import SectionIntro from "@/components/ui/SectionIntro";
+import { company } from "@/lib/site";
+
+const audiences = [
+  ["Marcas internacionales", "Marcas de motos eléctricas que evalúan una plataforma para un programa de producto definido."],
+  ["Importadores y distribuidores", "Socios de mercado que consideran vehículos de marca privada como parte de sus planes de importación y distribución."],
+  ["Nuevas marcas de movilidad", "Empresas que preparan el lanzamiento de una marca con una definición clara de mercado y producto."],
+  ["Operadores comerciales", "Operadores que evalúan programas de vehículos con identidad de marca para aplicaciones de reparto, servicio o trabajo utilitario."],
+] as const;
+
+const programScope = [
+  ["Selección de plataforma", "Evaluar plataformas KIMI según la aplicación prevista, el mercado y los requisitos comerciales."],
+  ["Requisitos de marca", "Analizar requisitos de marca privada y presentación de marca para proyectos elegibles."],
+  ["Revisión de configuración", "Revisar los requisitos del vehículo, equipamiento y operación, sujetos a la viabilidad de la plataforma y a la confirmación de los proveedores pertinentes."],
+  ["Coordinación del suministro", "Coordinar la planificación comercial, el empaque, la documentación y la preparación del suministro con los socios pertinentes."],
+] as const;
+
+const platforms = [
+  { name: "Delivery X1", label: "Reparto / Última milla", href: "/es/productos/delivery-x1", image: "/images/products/Delivery/X1/02_Product/KIMI_Delivery_X1_Product_Card.webp", alt: "Moto eléctrica comercial KIMI Delivery X1", linkLabel: "Ver plataforma" },
+  { name: "Urban X1", label: "Urbana / Scooter eléctrico", href: "/products/urban-x1", image: "/images/products/Urban/X1/02_Product/urban-x1-product-card.webp", alt: "Scooter eléctrico KIMI Urban X1", linkLabel: "Ver plataforma — página en inglés" },
+  { name: "Utility X1", label: "Uso comercial utilitario", href: "/products/utility-x1", image: "/images/products/Utility/X1/02_Product/utility-x1-product-card.webp", alt: "Moto eléctrica comercial KIMI Utility X1", linkLabel: "Ver plataforma — página en inglés" },
+] as const;
+
+const requirements = ["Presentación de marca", "Mercado de destino", "Aplicación prevista", "Requisitos del vehículo y la plataforma", "Requisitos de carga y operación", "Cantidad prevista", "Requisitos de empaque", "Requisitos de documentación"] as const;
+
+const pathway = [
+  ["Definición del proyecto", "Definir la empresa, el mercado de destino, la aplicación prevista y los objetivos del programa."],
+  ["Preselección de plataformas", "Identificar las plataformas que mejor se ajustan a la definición inicial."],
+  ["Revisión de requisitos y viabilidad", "Revisar los requisitos de marca, configuración y suministro con los proveedores pertinentes."],
+  ["Evaluación de muestra o comercial", "Analizar una ruta de evaluación adecuada según el proyecto y la cantidad prevista."],
+  ["Planificación comercial y de suministro", "Coordinar los requisitos comerciales, de empaque, documentación y suministro una vez confirmados."],
+] as const;
+
+const relatedPaths = [
+  ["Socios de distribución", "Evalúe una relación comercial orientada al mercado, la importación y los canales de venta.", "/es/socios/distribuidores"],
+  ["Soluciones para flotas de reparto", "Analice rutas, carga y requisitos operativos para proyectos comerciales de reparto.", "/es/soluciones/flota-reparto"],
+  ["Proyectos en Colombia", "Consulte el enfoque para proyectos de movilidad eléctrica comercial dirigidos a Colombia.", "/es/mercados/colombia"],
+] as const;
+
+const projectBrief = ["Empresa y mercado de destino", "Marca o programa previsto", "Plataforma de vehículo preferida", "Cantidad prevista", "Requisitos de marca o marca privada", "Requisitos de producto y operación"] as const;
+
+export default function OemLandingEs() {
+  return (
+    <main>
+      <section className="relative min-h-[46rem] overflow-hidden bg-[#101923] pt-[5.25rem] text-white">
+        <Image alt="Plataforma de moto eléctrica KIMI para evaluación de proyectos OEM" className="absolute inset-0 h-full w-full object-cover object-[58%_center]" fill priority sizes="100vw" src="/images/products/Delivery/X1/01_Hero/KIMI_Delivery_X1_Hero_V1.webp" unoptimized />
+        <div className="absolute inset-0 bg-black/45 [background:linear-gradient(90deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.65)_46%,rgba(0,0,0,.14)_82%)]" />
+        <Container className="relative flex min-h-[calc(46rem-5.25rem)] items-end pb-16 pt-20 sm:pb-20 lg:items-center lg:pb-0">
+          <div className="max-w-4xl"><p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">OEM y marca privada</p><h1 className="mt-6 text-[length:var(--text-display)] font-semibold leading-[.96] tracking-[-0.055em]">Programas de Motos Eléctricas OEM y Marca Privada</h1><p className="mt-7 max-w-3xl text-lg leading-relaxed text-white/68 sm:text-xl">KIMI Mobility trabaja con marcas, importadores, distribuidores y operadores comerciales para evaluar plataformas de motos eléctricas destinadas a proyectos OEM o de marca privada, con requisitos y suministro sujetos a revisión para cada proyecto.</p><div className="mt-9 flex flex-wrap gap-4"><ButtonLink href="/partners/distributors#distributor-rfq" size="large">Enviar información del proyecto OEM — formulario en inglés</ButtonLink><ButtonLink href="/es/productos/delivery-x1" size="large" variant="secondary">Ver Delivery X1</ButtonLink></div></div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-[var(--space-section)]"><Container><SectionIntro eyebrow="Para quién es el programa" title="Basado en una definición clara de producto y marca." /><div className="mt-14 grid border-l border-t border-kimi-black/15 md:grid-cols-2">{audiences.map(([title, description], index) => <article className="border-b border-r border-kimi-black/15 p-7 sm:p-10" key={title}><span className="text-xs font-semibold tracking-[0.18em] text-kimi-green">0{index + 1}</span><h2 className="mt-8 text-2xl font-semibold tracking-[-0.035em]">{title}</h2><p className="mt-4 max-w-md leading-7 text-kimi-black/58">{description}</p></article>)}</div></Container></section>
+
+      <section className="bg-kimi-black py-[var(--space-section)] text-white"><Container><SectionIntro inverse eyebrow="Alcance del programa" title="Un proceso sujeto al proyecto, desde la plataforma hasta el suministro." /><div className="mt-14 grid border-l border-t border-white/15 md:grid-cols-2">{programScope.map(([title, description], index) => <article className="border-b border-r border-white/15 p-7 sm:p-10" key={title}><span className="text-xs font-semibold tracking-[0.18em] text-kimi-green">0{index + 1}</span><h2 className="mt-8 text-2xl font-semibold tracking-[-0.035em]">{title}</h2><p className="mt-4 max-w-lg leading-7 text-white/55">{description}</p></article>)}</div></Container></section>
+
+      <section className="bg-[#e9e9e6] py-[var(--space-section)]"><Container><SectionIntro eyebrow="Selección de plataforma" title="Comience con la plataforma adecuada para la aplicación." description="Las plataformas de reparto, movilidad urbana y uso utilitario ofrecen un punto de partida para evaluar proyectos de motos eléctricas OEM y de marca privada." /><div className="mt-14 grid gap-px bg-kimi-black/15 lg:grid-cols-3">{platforms.map((platform) => <Link className="group bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kimi-green" href={platform.href} key={platform.name}><div className="aspect-[4/3] overflow-hidden bg-[#f2f2f0]"><Image alt={platform.alt} className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.025]" height={900} loading="lazy" sizes="(min-width:1024px) 33vw, 100vw" src={platform.image} unoptimized width={1200} /></div><div className="p-7 sm:p-8"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-kimi-green">{platform.label}</p><h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em]">{platform.name}</h2><span className="mt-7 inline-flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.18em]">{platform.linkLabel}<span aria-hidden="true" className="h-px w-10 bg-kimi-green" /></span></div></Link>)}</div></Container></section>
+
+      <section className="bg-white py-[var(--space-section)]"><Container className="grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-20"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">Revisión de requisitos</p><h2 className="mt-5 text-[length:var(--text-heading)] font-semibold leading-[1.02] tracking-[-0.05em]">Requisitos que pueden evaluarse.</h2><p className="mt-7 text-[length:var(--text-lead)] leading-relaxed text-kimi-black/58">Las solicitudes de marca, colores, configuración del vehículo, batería, motor, autonomía y carga pueden analizarse como parte de la definición del proyecto. La planificación de repuestos, coordinación de envíos internacionales, certificación, homologación, CKD/SKD, herramientas, moldes, plazo, MOQ, garantía y exclusividad están sujetas a revisión del proyecto y confirmación de los proveedores pertinentes.</p></div><div><ul className="grid border-l border-t border-kimi-black/15 sm:grid-cols-2">{requirements.map((requirement) => <li className="border-b border-r border-kimi-black/15 p-5 font-medium" key={requirement}>{requirement}</li>)}</ul><p className="mt-7 border-l-2 border-kimi-green pl-5 leading-7 text-kimi-black/65">La disponibilidad y viabilidad dependen de la plataforma seleccionada, los requisitos del proyecto, la cantidad, el mercado de destino y la confirmación de los proveedores pertinentes.</p></div></Container></section>
+
+      <section className="bg-[#e9e9e6] py-[var(--space-section)]"><Container><SectionIntro eyebrow="Proceso del proyecto" title="De la definición del proyecto a la planificación comercial." description="Cada paso es una etapa de evaluación y coordinación definida por la plataforma seleccionada, los requisitos del proyecto y la confirmación de los proveedores pertinentes." /><ol className="mt-14 grid border-l border-t border-kimi-black/15 md:grid-cols-2 lg:grid-cols-5">{pathway.map(([title, description], index) => <li className="border-b border-r border-kimi-black/15 p-7" key={title}><span className="text-sm font-semibold tracking-[0.18em] text-kimi-green">{String(index + 1).padStart(2, "0")}</span><h2 className="mt-8 text-xl font-semibold tracking-[-0.035em]">{title}</h2><p className="mt-4 leading-7 text-kimi-black/58">{description}</p></li>)}</ol></Container></section>
+
+      <section className="bg-white py-[var(--space-section)]"><Container><SectionIntro eyebrow="OEM frente a distribución" title="Elija el camino comercial que corresponda a su objetivo." /><div className="mt-14 grid gap-px bg-kimi-black/15 lg:grid-cols-2"><article className="bg-kimi-black p-8 text-white sm:p-12"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-kimi-green">OEM / Marca privada</p><h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em]">Evaluación de producto y marca</h2><p className="mt-6 max-w-xl leading-7 text-white/58">Para proyectos centrados en el producto, la presentación de marca, la selección de plataforma, los requisitos de configuración y el suministro sujeto al proyecto.</p></article><article className="bg-[#f2f2f0] p-8 sm:p-12"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-kimi-green">Cooperación con distribuidores</p><h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em]">Relación de mercado y canal</h2><p className="mt-6 max-w-xl leading-7 text-kimi-black/58">Para proyectos centrados en importación, canales de venta, desarrollo de mercado y distribución local.</p><Link className="mt-8 inline-flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.18em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kimi-green" href="/es/socios/distribuidores">Ver cooperación con distribuidores<span aria-hidden="true" className="h-px w-10 bg-kimi-green" /></Link></article></div></Container></section>
+
+      <section className="bg-[#15191b] py-[var(--space-section)] text-white"><Container><SectionIntro inverse eyebrow="Rutas comerciales relacionadas" title="Continúe la evaluación de su proyecto." /><div className="mt-14 grid gap-px bg-white/15 lg:grid-cols-3">{relatedPaths.map(([title, description, href]) => <Link className="group bg-kimi-black p-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kimi-green sm:p-10" href={href} key={href}><h2 className="text-2xl font-semibold tracking-[-0.035em]">{title}</h2><p className="mt-5 leading-7 text-white/52">{description}</p><span className="mt-8 inline-flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.18em] text-kimi-green">Ver más<span aria-hidden="true" className="h-px w-10 bg-kimi-green" /></span></Link>)}</div></Container></section>
+
+      <section className="bg-kimi-black py-[var(--space-section)] text-white"><Container className="grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-20"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">Información del proyecto OEM</p><h2 className="mt-5 text-[length:var(--text-heading)] font-semibold leading-[1.02] tracking-[-0.05em]">Prepare los datos esenciales para la revisión.</h2><p className="mt-7 text-lg leading-relaxed text-white/55">Utilice el formulario existente para distribuidores, disponible en inglés, para compartir una consulta OEM o de marca privada con el equipo de KIMI.</p></div><div><ul className="grid border-l border-t border-white/15 sm:grid-cols-2">{projectBrief.map((item) => <li className="border-b border-r border-white/15 p-5 text-white/75" key={item}>{item}</li>)}</ul><p className="mt-7 leading-7 text-white/52">Seleccione <strong className="font-semibold text-white/78">Other</strong> en Business Type cuando corresponda, elija <strong className="font-semibold text-white/78">Private Label</strong> o <strong className="font-semibold text-white/78">To Be Discussed</strong> en Branding Requirement y describa los requisitos en Project Requirements.</p><div className="mt-9 flex flex-wrap items-center gap-5"><ButtonLink href="/partners/distributors#distributor-rfq" size="large">Enviar información del proyecto OEM — formulario en inglés</ButtonLink><a className="text-sm font-medium text-white/70 transition-colors hover:text-kimi-green focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kimi-green" href={`mailto:${company.email}`}>{company.email}</a></div></div></Container></section>
+    </main>
+  );
+}

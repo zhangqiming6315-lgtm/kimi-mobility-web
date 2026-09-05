@@ -207,13 +207,16 @@ export default function DeliveryX1Showcase() {
       </section>
 
       <section className="scroll-mt-[5.25rem] border-t border-white/10 bg-[#15191b] py-[var(--space-section)] text-white" id="dealer-inquiry">
-        <Container className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+        <Container className="grid gap-10 xl:grid-cols-[1fr_auto] xl:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-kimi-green">Dealer inquiry</p>
             <h2 className="mt-5 max-w-4xl text-[length:var(--text-heading)] font-semibold leading-[1.01] tracking-[-0.05em]">Bring Delivery X1 to your market.</h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/55">Connect with KIMI Mobility about distribution, fleet deployment, and commercial partnerships.</p>
           </div>
-          <ButtonLink className="!bg-kimi-green !text-kimi-black hover:!bg-white focus-visible:!outline-kimi-green" href="/contact" size="large" variant="primary">Become a Dealer</ButtonLink>
+          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap xl:justify-end">
+            <ButtonLink className="whitespace-nowrap !bg-kimi-green !text-kimi-black hover:!bg-white focus-visible:!outline-kimi-green" href="/solutions/delivery-fleet#fleet-rfq" size="large" variant="primary">Request a Fleet Proposal</ButtonLink>
+            <ButtonLink className="whitespace-nowrap" href="/partners/distributors#distributor-rfq" size="large" variant="secondary">Discuss Distribution</ButtonLink>
+          </div>
         </Container>
       </section>
     </div>

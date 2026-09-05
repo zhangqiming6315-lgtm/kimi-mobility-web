@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import DistributorLanding from "@/components/partners/DistributorLanding";
 import { absoluteUrl } from "@/lib/site";
 
@@ -29,5 +31,11 @@ export const metadata: Metadata = {
 };
 
 export default function DistributorPage() {
-  return <DistributorLanding />;
+  return (
+    <>
+      <Header />
+      <DistributorLanding />
+      <Footer />
+    </>
+  );
 }
